@@ -7,6 +7,14 @@
 	"items": [
 		
 			{
+				"id": "http://thompsonson.micro.blog/2026/01/29/france-to-ban-social-media.html",
+				"title": "France to ban social media for under 15s",
+				"content_html": "<p>As a Dad of two young girls this is nothing short of excellent news.</p>\n<!-- raw HTML omitted -->\n",
+				"content_text": "As a Dad of two young girls this is nothing short of excellent news. \n\n\n\n<img src=\"uploads/2026/adab97acab.png\" width=\"270\" height=\"600\" alt=\"\">\n",
+				"date_published": "2026-01-29T11:37:04+01:00",
+				"url": "https://matt.thompson.gr/2026/01/29/france-to-ban-social-media.html"
+			},
+			{
 				"id": "http://thompsonson.micro.blog/2026/01/28/learning-about-contingent-planning.html",
 				"title": "Learning about Contingent Planning ",
 				"content_html": "<p>This is a question that holds a lot of work on its shoulders!</p>\n<p>I&rsquo;m noting it here as it still has some weight to be unburdened, specifically that I have focused on an agent that uses Contingent Planning rather than an RL on/off-policy agent.</p>\n<p>I need to internalise what that means. Time to reread the right chapter of AIMA!!</p>\n<!-- raw HTML omitted -->\n",
