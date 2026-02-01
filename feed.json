@@ -7,6 +7,15 @@
 	"items": [
 		
 			{
+				"id": "http://thompsonson.micro.blog/2026/02/01/best-ai-use-case-build.html",
+				"title": "Best AI use case: build a beginner programmable Drone guide! ",
+				"content_html": "<p>This has been a fun morning of investigation into how I can replace my broken Tello and get into RL for Drone Training 🤓🤓</p>\n<p><a href=\"https://claude.ai/public/artifacts/c3ababa7-3eb1-4437-83c4-320a53182346\">Artifact</a> from the convo with Claude.</p>\n",
+				"content_text": "This has been a fun morning of investigation into how I can replace my broken Tello and get into RL for Drone Training 🤓🤓\n\n[Artifact](https://claude.ai/public/artifacts/c3ababa7-3eb1-4437-83c4-320a53182346) from the convo with Claude. \n\n\n",
+				"date_published": "2026-02-01T13:31:19+01:00",
+				"url": "https://matt.thompson.gr/2026/02/01/best-ai-use-case-build.html",
+				"tags": ["Reinforcement Learning"]
+			},
+			{
 				"id": "http://thompsonson.micro.blog/2026/01/29/france-to-ban-social-media.html",
 				"title": "France to ban social media for under 15s",
 				"content_html": "<p>As a Dad of two young girls this is nothing short of excellent news.</p>\n<!-- raw HTML omitted -->\n",
@@ -45,7 +54,7 @@
 				"id": "http://thompsonson.micro.blog/2026/01/21/this-is-worth-repeating-often.html",
 				
 				"content_html": "<p>This is worth repeating often as it is easy to conflate the two when caught up in other priorities.</p>\n<p><a href=\"https://www.patreon.com/posts/148462341\">Incremental means add onto; Iterative means revise</a></p>\n<blockquote>\n<p>Incremental means add onto.\nIt helps improve the process.</p>\n</blockquote>\n<blockquote>\n<p>Iterative means revise.\nIt helps improve the product.</p>\n</blockquote>\n<blockquote>\n<p>this could be repeated daily.</p>\n</blockquote>\n<!-- raw HTML omitted -->\n",
-				"content_text": "This is worth repeating often as it is easy to conflate the two when caught up in other priorities.\n\n[Incremental means add onto; Iterative means revise](https://www.patreon.com/posts/148462341)\n\n> Incremental means add onto. \n> It helps improve the process.\n\n\n> Iterative means revise. \n> It helps improve the product.\n\n\n> this could be repeated daily.\n\n\n<img src=\"uploads/2026/80ac03f3be.png\" width=\"600\" height=\"110\" alt=\"\">\n",
+				"content_text": "This is worth repeating often as it is easy to conflate the two when caught up in other priorities.\n\n[Incremental means add onto; Iterative means revise](https://www.patreon.com/posts/148462341)\n\n> Incremental means add onto. \n> It helps improve the process.\n\n\n> Iterative means revise. \n> It helps improve the product.\n\n\n> this could be repeated daily.\n\n\n<img src=\"https://matt.thompson.gr/uploads/2026/80ac03f3be.png\" width=\"600\" height=\"110\" alt=\"\">\n",
 				"date_published": "2026-01-21T03:51:19+01:00",
 				"url": "https://matt.thompson.gr/2026/01/21/this-is-worth-repeating-often.html"
 			},
