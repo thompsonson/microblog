@@ -7,6 +7,14 @@
 	"items": [
 		
 			{
+				"id": "http://thompsonson.micro.blog/2026/02/10/125426.html",
+				
+				"content_html": "<!-- raw HTML omitted -->\n",
+				"content_text": "<img src=\"uploads/2026/whatsapp-image-2026-02-07-at-11.51.05.jpg\" width=\"600\" height=\"450\" alt=\"\">\n",
+				"date_published": "2026-02-10T12:54:26+01:00",
+				"url": "https://matt.thompson.gr/2026/02/10/125426.html"
+			},
+			{
 				"id": "http://thompsonson.micro.blog/2026/02/01/best-ai-use-case-build.html",
 				"title": "Best AI use case: build a beginner programmable Drone guide! ",
 				"content_html": "<p>This has been a fun morning of investigation into how I can replace my broken Tello and get into RL for Drone Training 🤓🤓</p>\n<p><a href=\"https://claude.ai/public/artifacts/c3ababa7-3eb1-4437-83c4-320a53182346\">Artifact</a> from the convo with Claude.</p>\n",
