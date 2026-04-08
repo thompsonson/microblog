@@ -24,10 +24,154 @@
 	
 	  <div class="h-entry">
 		
+			<h1><a href="https://matt.thompson.gr/2026/04/08/ia-what-is-rationality-and.html">[IA 11] What is Rationality and how does it relate to a Rational Agent in AI?</a></h1>
+		
+
+		<a href="https://matt.thompson.gr/2026/04/08/ia-what-is-rationality-and.html" class="u-url"><time class="dt-published" datetime="2026-04-08 05:58:28 &#43;0200">Apr 8, 2026</time></a>
+
+		<div class="e-content">
+			 <p>In the Spring and Summer of 2025 I had the heady intent of defining Formal Agents, starting with Rationality as this is a term used throughout the domain of AI.</p>
+<p>With the leak of Claude Code&rsquo;s code this seems even more topical, seeing prompts like <strong>&ldquo;please do not break the law&rdquo;</strong> is quite disappointing for the leading AI lab. Jonny (good kind) (<a href="https://neuromatch.social/@jonny/">@jonny@neuromatch.social</a>) a digital infrastructure researcher covers the analysis <a href="https://neuromatch.social/@jonny/116328874108690080">here</a>.</p>
+<p>Jonny touches on the <a href="https://neuromatch.social/@jonny/116328874108690080#:~:text=This%20is%20an,is%20down%20there.">subject of gambling</a> and it connects through Rationality and a long history of interest in this field.</p>
+<h2 id="so-what-is-rationality">So, what is Rationality?</h2>
+<p>I started with 4 main sources back in 2025:</p>
+<ol>
+<li>
+<p>Russell and Norvig&rsquo;s AI a Modern Approach. The conical work, <a href="https://matt.thompson.gr/2025/05/16/ia-series-n-intelligent-agents.html#:~:text=Performance%20and%20Rationality">that I touched on in article 3</a> I felt the need to add the term <strong>&ldquo;Irrational Performance Measure&rdquo;</strong> as well.</p>
+</li>
+<li>
+<p>Jon McCarthy&rsquo;s thoughts on AI and his 1958 paper <a href="http://www-formal.stanford.edu/jmc/mcc59/mcc59.html">&ldquo;Programs with Common Sense&rdquo;</a> where he discussed what he called &ldquo;common sense reasoning&rdquo;</p>
+</li>
+<li>
+<p>Jon Doyle&rsquo;s wonderful apology and his PhD thesis, where the section on deliberation and a formalisation of it was particularly interesting.</p>
+</li>
+<li>
+<p>YouTube interviews with Steven Pinker, he has written a book &ldquo;Rationality: What It Is, Why It Seems Scarce, Why It Matters&rdquo;. His work didn&rsquo;t stick with me, other than to say there are many different views worth considering from outside of the Comp Sci/AI domain. He acknowledges the difference between a decision-based approach and how humans actually think.</p>
+</li>
+</ol>
+<h2 id="irrational-perofmrance-measure">Irrational Perofmrance Measure?</h2>
+<blockquote>
+<p><strong>Irrational Performance Metrics</strong>: (My definition to help understand why an agent may act irrationally) Metrics that can lead to undesirable or counterproductive behaviour when used to evaluate agent performance.</p>
+</blockquote>
+<p>This was the entry into Utility. It&rsquo;s only really in hindsight that I see this, and I think there is a certain formality that could be added to this definition as this, Irrational Performance Measure, is a subjective term.</p>
+<p>It&rsquo;s simply my way of saying, this Rational Agent is meeting it&rsquo;s targets but it has no Utility for me.</p>
+<h2 id="what-is-utility-and-why-is-it-relevant">What is Utility and why is it relevant?</h2>
+<p>Enter the rabbit hole, grab a drink, and get comfy.</p>
+<p>It was a fine Summer in 1738 and the Bernoulli cousins where chewing the fat whilst gambling&hellip; OK, I&rsquo;ve no idea about that but I&rsquo;d like to think that this came from some <em>friendly</em> family conversations and wikipedia covers the <a href="https://en.wikipedia.org/wiki/St._Petersburg_paradox">St. Petersburg paradox</a> better than I can.</p>
+<p>In brief, <a href="https://en.wikipedia.org/wiki/Nicolaus_I_Bernoulli">Nicolaus Bernoulli</a> invented a game in 1713 and <a href="https://en.wikipedia.org/wiki/Daniel_Bernoulli">Daniel Bernoulli</a> responded in 1738 and opened the door to Expected Utility theory.</p>
+<p>The game Nicolaus designed was to answer a question like: &ldquo;<em>How much would you pay to enter a game were you could win an infintie amount of money (or lose all you put on the table)?</em>&rdquo;</p>
+<p>Daniel&rsquo;s response was that it is not about the price, rather the usefulness of the outcome to the player:</p>
+<blockquote>
+<p>The determination of the value of an item must not be based on the price, but rather on the utility it yields &hellip; There is no doubt that a gain of one thousand ducats is more significant to the pauper than to a rich man though both gain the same amount.</p>
+</blockquote>
+<p>For me, this is relevant to agent capability. One man&rsquo;s Rational Performance Measure is another man&rsquo;s Irrational Performance Measure. Claude Code does what it can to get a user base and win big Enterprise Contracts. I do not think I am along in saying that is the Performance Measure that Anthropic has for it&rsquo;s Coding Agent.</p>
+<p>To be clear, that doesn&rsquo;t mean the Coding Agent has no Utility for me, it does and I use it daily. However it is most definitely not aligned to my intent and the Performance Measures I see Utility in.</p>
+<h2 id="the-second-act---bayesian-vs-frequentist-the-statistians-civil-war">The second act - Bayesian vs Frequentist: the Statistians Civil War</h2>
+<p>Maybe the above has hooked you, maybe not. Next is a brief tour of probabilty over the next 350 years. Specifically how belief and utility are a foundational of rational decision making.</p>
+<p>I have thought about writing to convince you Bayesian Statistics is the correct way to view the world, they are the Jedi&rsquo;s using the force for good, and that Frequentists are the Empire and only use the force for control.</p>
+<p>Controversial and I do not wish to cause offense if you are a well versed Frequentist and have a sound counter-argument. However I am a very happy Bayesian and, some friendly banter aside, don&rsquo;t find the debate useful. So if you firly see the world as a Frequentist, this isn&rsquo;t for you.</p>
+<h3 id="1738-expected-utility-theory">1738: Expected Utility Theory</h3>
+<p><em>Daniel Bernoulli: <a href="https://archive.org/details/bfriedmanfaculty">&ldquo;Specimen Theoriae Novae de Mensura Sortis&rdquo;</a></em></p>
+<blockquote>
+<p>Key section: The St. Petersburg Paradox resolution — diminishing marginal utility.</p>
+</blockquote>
+<p>Utility ≠ price. What something is worth depends on who you are. This is the &ldquo;one agents&rsquo;s Rational Performance Measure is another agent&rsquo;s Irrational Performance Measure&rdquo; formalised. 288 years ago. History is useful eh!</p>
+<h3 id="1763-bayes-theorem">1763: Bayes' Theorem</h3>
+<p><em>Thomas Bayes: <a href="https://www.jstor.org/stable/105741">&ldquo;An Essay Towards Solving a Problem in the Doctrine of Chances&rdquo;</a> (published posthumously by Richard Price)</em></p>
+<blockquote>
+<p>Key sections: I–V establish the inverse probability framework. Price&rsquo;s introduction contextualises why.</p>
+</blockquote>
+<p>You can update beliefs with evidence. His goal was a defense of God&rsquo;s existance, personally I like his attempts, I do not believe in God (despite my upbringing, however I see the utility in his work and in people&rsquo;s belief in God). Back to the maths - he used uniform priors and treated probability as objective, out there in the world.</p>
+<h3 id="1774-laplacian-revolution">1774: Laplacian Revolution</h3>
+<p><em>Pierre-Simon Laplace: &ldquo;Mémoire sur la probabilité des causes par les événemens&rdquo;</em> (1774, French original)</p>
+<blockquote>
+<p>Key reading: The opening pages where he defines probability relative to observer knowledge.</p>
+</blockquote>
+<p>&ldquo;Probability is relative to our ignorance and our knowledge.&rdquo; His work brought in the idea of subjective probability, building on the work of Bayes and refining it to state that probability belongs to the observer, not the event. This is key.</p>
+<h3 id="1812-1814-consolidation-of-bayesian-approach">1812-1814: Consolidation of Bayesian Approach</h3>
+<p><em>Laplace: &ldquo;Théorie analytique des probabilités&rdquo; (1812) and <a href="https://archive.org/details/essaiphilosophi00laplgoog">&ldquo;Essai philosophique sur les probabilités&rdquo;</a> (1814)</em></p>
+<blockquote>
+<p>Key chapter: The Rule of Succession (sun rising tomorrow). The Essai is the readable one; the Théorie analytique is the maths.</p>
+</blockquote>
+<p>Calculated odds of the sun rising tomorrow. This is a great experiment to have done, for us it is easy to say the sun <em>will</em> rise tomorrow and we plan accordingly. If it doesn&rsquo;t we probably will never now it didn&rsquo;t, I&rsquo;m sure our plans to take our kids to school or to tidy the house will not be that useful.</p>
+<p>However, one day the sun won&rsquo;t rise. That day is millions, maybe billions of years away when the sun dies. Or may be sooner if there&rsquo;s something we don&rsquo;t understand about the universe.</p>
+<p>Eitherway, it is fair to say that the probability of the sun rising tomorrow is not 1.</p>
+<h3 id="1921-keyness-logical-relationist-approach">1921: Keynes&rsquo;s Logical-Relationist Approach</h3>
+<p><em>John Maynard Keynes: <a href="https://archive.org/details/treatiseonprobab007528mbp">&ldquo;A Treatise on Probability&rdquo;</a></em> (also on <a href="https://www.gutenberg.org/ebooks/32625">Project Gutenberg</a>)</p>
+<blockquote>
+<p>Key chapters: Part I, Chapters 1–4: logical-relationist view and the Principle of Indifference. Chapter 4 specifically on when indifference is justified — the &ldquo;actually equal vs treated as equal&rdquo; question.</p>
+</blockquote>
+<p>He posited the following, bringing logic and the Principle of Indifference into the conversation.</p>
+<ul>
+<li>&ldquo;Logical-relationist&rdquo; theory: Probability as logical relation between evidence and hypothesis</li>
+<li>Principle of Indifference: Refinement of Laplace&rsquo;s insufficient reason principle</li>
+<li>When should we treat probabilities as equal vs. actually equal?</li>
+</ul>
+<p>What a question to ask! Calibration&hellip;</p>
+<h3 id="1926-ramseys-subjective-revolution">1926: Ramsey&rsquo;s Subjective Revolution</h3>
+<p><em>Frank Ramsey: <a href="https://archive.org/details/foundationsofmat0000rams">&ldquo;Truth and Probability&rdquo;</a> (written 1926, published 1931, in &ldquo;The Foundations of Mathematics and Other Logical Essays&rdquo;)</em></p>
+<blockquote>
+<p>Key essay: &ldquo;Truth and Probability&rdquo; — the Dutch Book argument is in sections 3–4.</p>
+</blockquote>
+<p>If your beliefs break the probability axioms, someone can construct bets where you always lose (Dutch Book).</p>
+<p>So coherent beliefs must follow the rules. But coherent doesn&rsquo;t mean correct. Calibration&hellip;</p>
+<h3 id="1937-de-finettis-betting-framework">1937: De Finetti&rsquo;s Betting Framework</h3>
+<p><em>Bruno de Finetti: &ldquo;La Prévision: ses lois logiques, ses sources subjectives&rdquo;</em> (English translation in Kyburg &amp; Smokler&rsquo;s <a href="https://archive.org/details/studiesinsubject0000unse">&ldquo;Studies in Subjective Probability&rdquo;</a>)</p>
+<blockquote>
+<p>Key reading: The betting framework and Dutch Book proof. Original is in French; the Kyburg translation is the standard English version.</p>
+</blockquote>
+<p>Made probability operational. Your probability IS your betting price. Proved coherent prices must obey the axioms (total 1). But: you could coherently believe a fair coin is 75/25 heads/tails. Nothing in the framework stops you. The arbitrariness problem. Calibration&hellip;</p>
+<h3 id="1939-jeffreyss-geophysical-bayesianism">1939: Jeffreys&rsquo;s Geophysical Bayesianism</h3>
+<p><em>Harold Jeffreys: <a href="https://archive.org/details/theoryofprobabil0000jeff">&ldquo;Theory of Probability&rdquo;</a></em></p>
+<blockquote>
+<p>Key chapter: Chapter 1 (Fundamental Notions) for the &ldquo;probability is not frequency&rdquo; argument.</p>
+</blockquote>
+<p>&ldquo;No probability is simply a frequency.&rdquo; Probability is rational belief, full stop.</p>
+<h3 id="1944-game-theory-and-axiomatic-utility">1944: Game Theory and Axiomatic Utility</h3>
+<p><em>John von Neumann and Oskar Morgenstern: <a href="https://archive.org/details/theoryofgamesand0000vonn">&ldquo;Theory of Games and Economic Behavior&rdquo;</a></em></p>
+<blockquote>
+<p>Key sections: Chapter 1 and the Appendix on the axiomatic treatment of utility. The axioms are what matter — the game theory is a separate contribution.</p>
+</blockquote>
+<p>Von Neumann &amp; Morgenstern: Axiomatised utility. Rational preferences must be representable by expected utility.</p>
+<p>Connected rational choice to both probability and utility.</p>
+<h3 id="1954-savages-subjective-bayesian-synthesis">1954: Savage&rsquo;s Subjective Bayesian Synthesis</h3>
+<p><em>Leonard J. Savage: <a href="https://archive.org/details/foundationsofsta0000sava">&ldquo;The Foundations of Statistics&rdquo;</a></em></p>
+<blockquote>
+<p>Key chapter: Chapter 2 (Personal Probability) — subjective probability from preference axioms and the Sure-Thing Principle. The synthesis of Dutch Book + Utility + Rational Agency.</p>
+</blockquote>
+<p>Savage: The grand synthesis. Subjective probability + utility + rational choice, unified. Dutch Book + Utility Theory + Rational Agency in one framework.</p>
+<h2 id="five-points-for-consideration">Five points for consideration</h2>
+<ol>
+<li>Laplacian insight</li>
+</ol>
+<p>An agent&rsquo;s probability assessments are relative to what it knows. For an LLM, what it &ldquo;knows&rdquo; is its training data and context window. These are its priors — but they&rsquo;re opaque, unversioned, and unauditable. Can we make priors explicit and controllable? Are they coherent?</p>
+<ol>
+<li>Ramsey coherence</li>
+</ol>
+<p>We don&rsquo;t know if LLMs are coherent in any formal sense. Attention provides local (not loigical) consistency to the context - tokens relate to nearby tokens - but that&rsquo;s not Ramsey coherence. The embedding space has no formal logical consistency. The outputs feel coherent, which is the trap. We can&rsquo;t verify coherence, and we can&rsquo;t verify calibration. Both are opaque.</p>
+<p>Can Embeddings be made logicial coonsistent?</p>
+<ol>
+<li>De Finetti operational</li>
+</ol>
+<p>Beliefs are revealed through actions, not introspection. You can&rsquo;t ask an LLM &ldquo;how confident are you?&rdquo; and trust the answer (logprobs, confidence-accuracy mismatch). You have to test the output, not the reasoning.</p>
+<ol>
+<li>Utility</li>
+</ol>
+<p>Different stakeholders have different utility functions. Anthropic&rsquo;s performance measure for Claude Code is not yours. This is the Irrational Performance Measure problem. Who calibrates the system and who defines &ldquo;good enough&rdquo;? Hint, it should be anyone reading this ;-)</p>
+<ol>
+<li>De Finetti&rsquo;s arbitrariness</li>
+</ol>
+<p>A system can be internally consistent and systematically wrong. Nothing in the coherence framework prevents this. What provides the external check?</p>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
 			<h1><a href="https://matt.thompson.gr/2026/04/02/social-media-giants-being-held.html">Social Media Giants being held to account 💪🏼</a></h1>
 		
 
-		<a href="https://matt.thompson.gr/2026/04/02/social-media-giants-being-held.html" class="u-url"><time class="dt-published" datetime="2026-04-02 18:57:42 &#43;0100">Apr 2, 2026</time></a>
+		<a href="https://matt.thompson.gr/2026/04/02/social-media-giants-being-held.html" class="u-url"><time class="dt-published" datetime="2026-04-02 19:57:42 &#43;0200">Apr 2, 2026</time></a>
 
 		<div class="e-content">
 			 <p><a href="https://www.bbc.com/news/articles/c87wd0d84jqo">www.bbc.com/news/arti&hellip;</a></p>
@@ -45,7 +189,7 @@
 			<h1><a href="https://matt.thompson.gr/2026/03/24/working-theory-on-how-genai.html">Working theory on how GenAI helps Software Engineering and Maintenance </a></h1>
 		
 
-		<a href="https://matt.thompson.gr/2026/03/24/working-theory-on-how-genai.html" class="u-url"><time class="dt-published" datetime="2026-03-24 07:52:07 &#43;0100">Mar 24, 2026</time></a>
+		<a href="https://matt.thompson.gr/2026/03/24/working-theory-on-how-genai.html" class="u-url"><time class="dt-published" datetime="2026-03-24 08:52:07 &#43;0200">Mar 24, 2026</time></a>
 
 		<div class="e-content">
 			 <p>I&rsquo;ve thought, written, and discussed LLMs/GenAI a lot over the past 3+ years. My view has always been general with an anchor of my expertise.</p>
@@ -82,7 +226,7 @@
 			<h1><a href="https://matt.thompson.gr/2026/03/23/managing-epistemic-learnings-and-uncertainty.html">Managing epistemic learnings and uncertainty and Vibe-Learning Rust</a></h1>
 		
 
-		<a href="https://matt.thompson.gr/2026/03/23/managing-epistemic-learnings-and-uncertainty.html" class="u-url"><time class="dt-published" datetime="2026-03-23 09:38:10 &#43;0100">Mar 23, 2026</time></a>
+		<a href="https://matt.thompson.gr/2026/03/23/managing-epistemic-learnings-and-uncertainty.html" class="u-url"><time class="dt-published" datetime="2026-03-23 10:38:10 &#43;0200">Mar 23, 2026</time></a>
 
 		<div class="e-content">
 			 <p>I spent the weekend collating my notes for my final Masters presentation. I went back further than the start of my Masters as it really added context and was personally insightful. It&rsquo;s the end of my &ldquo;GenAI&rdquo; chapter. Actually, LLM chapter as I&rsquo;ve never really had an interest in the other areas of GenAI.</p>
@@ -99,7 +243,7 @@
 			<h1><a href="https://matt.thompson.gr/2026/03/23/be-this-the-truest-to.html">Be this the truest to the name of World Model? </a></h1>
 		
 
-		<a href="https://matt.thompson.gr/2026/03/23/be-this-the-truest-to.html" class="u-url"><time class="dt-published" datetime="2026-03-23 09:24:59 &#43;0100">Mar 23, 2026</time></a>
+		<a href="https://matt.thompson.gr/2026/03/23/be-this-the-truest-to.html" class="u-url"><time class="dt-published" datetime="2026-03-23 10:24:59 &#43;0200">Mar 23, 2026</time></a>
 
 		<div class="e-content">
 			 <p>Deepmind adds value to understanding the earth and its climate?</p>
@@ -117,7 +261,7 @@ Reasoning</a></p>
 			<h1><a href="https://matt.thompson.gr/2026/03/15/what-are-the-domains-of.html">What are the domains of AI?</a></h1>
 		
 
-		<a href="https://matt.thompson.gr/2026/03/15/what-are-the-domains-of.html" class="u-url"><time class="dt-published" datetime="2026-03-15 12:54:54 &#43;0100">Mar 15, 2026</time></a>
+		<a href="https://matt.thompson.gr/2026/03/15/what-are-the-domains-of.html" class="u-url"><time class="dt-published" datetime="2026-03-15 13:54:54 &#43;0200">Mar 15, 2026</time></a>
 
 		<div class="e-content">
 			 <ul>
