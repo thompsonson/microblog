@@ -24,6 +24,181 @@
 	
 	  <div class="h-entry">
 		
+			<h1><a href="https://matt.thompson.gr/2026/06/05/quantum-computing-explained-the-maze.html">Quantum Computing Explained: The Maze Analogy</a></h1>
+		
+
+		<a href="https://matt.thompson.gr/2026/06/05/quantum-computing-explained-the-maze.html" class="u-url"><time class="dt-published" datetime="2026-06-05 22:48:35 &#43;0200">Jun 5, 2026</time></a>
+
+		<div class="e-content">
+			 <p>interesting video, makes it exciting and relatable&hellip;</p>
+<style>
+.video-wrapper {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  max-width: 100%;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.video-thumbnail {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background-color: #000;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.video-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.85);
+  color: white;
+  text-align: center;
+  font-size: 0.85em;
+  padding: 0.5em 1em;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.video-play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 68px;
+  height: 48px;
+  background-color: rgba(255, 0, 0, 0.8);
+  border-radius: 12px;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.video-play-button::before {
+  content: '';
+  position: absolute;
+  left: 26px;
+  top: 14px;
+  width: 0;
+  height: 0;
+  border-left: 18px solid white;
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+}
+
+.video-wrapper iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  z-index: 4;
+}
+</style>
+
+<div class="video-wrapper" data-video-id="gFbAFeatRJE">
+  <img
+    class="video-thumbnail"
+    src="https://img.youtube.com/vi/gFbAFeatRJE/maxresdefault.jpg"
+    onerror="this.onerror=null; this.src='https://img.youtube.com/vi/gFbAFeatRJE/0.jpg';"
+    alt="YouTube Thumbnail">
+    
+  
+
+  <div class="video-play-button"></div>
+</div>
+
+<script>
+document.querySelectorAll('.video-wrapper').forEach(wrapper => {
+  if (wrapper.dataset.listenersAdded === 'true') {
+    return;
+  }
+  wrapper.dataset.listenersAdded = 'true';
+
+  const videoId = wrapper.dataset.videoId;
+  const overlay = wrapper.querySelector('.video-overlay');
+  const thumbnail = wrapper.querySelector('.video-thumbnail');
+
+  function loadVideo() {
+    wrapper.innerHTML = `<iframe src="https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&mute=1" allowfullscreen></iframe>`;
+  }
+
+  wrapper.addEventListener('click', loadVideo);
+  overlay?.addEventListener('click', loadVideo);
+  thumbnail?.addEventListener('click', loadVideo);
+});
+</script>
+
+<p>sadly it doesn&rsquo;t seem to be a real analogy&hellip;</p>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
+			<h1><a href="https://matt.thompson.gr/2026/05/30/spacex-ipo-imminent.html">SpaceX IPO imminent </a></h1>
+		
+
+		<a href="https://matt.thompson.gr/2026/05/30/spacex-ipo-imminent.html" class="u-url"><time class="dt-published" datetime="2026-05-30 09:17:55 &#43;0200">May 30, 2026</time></a>
+
+		<div class="e-content">
+			 <p>I think on the positive side, and this is a tenuous positive link, the American public is about to pay for research into new technology. I say positive in there there are some good aspects to SpaceX, reusable rockets and satellite communications.</p>
+<p>On the more realistic side the American public is being conned and cleaning up mistakes that would drive any other company under.</p>
+<p>I&rsquo;m not American so more specific opinion doesn&rsquo;t matter too much however I would be okay with this nationalisation of technical assets if the research was done for the benefit of at least the nation ideally all human kind.</p>
+<p>However as useful as transformers and large language models are the market for both chat and AI agents is being massively inflated by hype and social media. And if you watch this video you&rsquo;ll see that it is creating a massive loss in another wise profitable business.</p>
+<p>And this is where I think you can see the good and the bad of Elon Musk and similar tech Titans, the technical advancements of rockets and satellite communications is, in my view, un-debateable. However this incessant competitive irresponsible push for artificial intelligence is absurd.</p>
+<p>The value of connecting every single human being is also debatable people should choose and not have their brains hacked and hijacked.</p>
+<p><a href="https://youtu.be/-X6YzlY_8tM?is=i1Qr7bQuRiXhd9-G">youtu.be/-X6YzlY_8&hellip;</a></p>
+<!-- raw HTML omitted -->
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
+			<h1><a href="https://matt.thompson.gr/2026/05/30/canon-tdd-make-good-interface.html">Canon TDD; make good interface decisions. </a></h1>
+		
+
+		<a href="https://matt.thompson.gr/2026/05/30/canon-tdd-make-good-interface.html" class="u-url"><time class="dt-published" datetime="2026-05-30 04:11:15 &#43;0200">May 30, 2026</time></a>
+
+		<div class="e-content">
+			 <p>Why do it?</p>
+<blockquote>
+<p>It’s in the writing of this test that you’ll begin making design decisions, but they are primarily interface decisions. Some implementation decisions may leak through, but you’ll get better at avoiding this over time.</p>
+</blockquote>
+<p>This hits the reason why I value tests the most (as well as regression protection).</p>
+<p>When I write tests I challenge my thinking and also get better interfaces and decomposition.</p>
+<p>This is all from the man himself, Kent Beck; <a href="https://open.substack.com/pub/tidyfirst/p/canon-tdd">Canon TDD on Kent&rsquo;s Tidy First Blog</a>.</p>
+<p>The process:</p>
+<ol>
+<li>
+<p>Write a list of the test scenarios you want to cover</p>
+</li>
+<li>
+<p>Turn exactly one item on the list into an actual, concrete, runnable test</p>
+</li>
+<li>
+<p>Change the code to make the test (&amp; all previous tests) pass (adding items to the list as you discover them)</p>
+</li>
+<li>
+<p>Optionally refactor to improve the implementation design</p>
+</li>
+<li>
+<p>Until the list is empty, go back to #2</p>
+</li>
+</ol>
+<p>Pro tip: use an <a href="https://adr.github.io/">ADR</a> or a simple markdown file to document decisions, give context as to why that decision was made.</p>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
 			<h1><a href="https://matt.thompson.gr/2026/05/29/exciting-new-paper-to-read.html">Exciting new paper to read on Structured Priors in Gen AI</a></h1>
 		
 
