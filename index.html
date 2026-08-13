@@ -24,6 +24,113 @@
 	
 	  <div class="h-entry">
 		
+			<h1><a href="https://matt.thompson.gr/2026/08/13/125930.html">[IA Series 11/n] The Grammar of Logic — A Term Sheet</a></h1>
+		
+
+		<a href="https://matt.thompson.gr/2026/08/13/125930.html" class="u-url"><time class="dt-published" datetime="2026-08-13 12:59:30 &#43;0200">Aug 13, 2026</time></a>
+
+		<div class="e-content">
+			 <p><em>This is a term sheet for the grammar of logic, in the same spirit as the original <a href="https://matt.thompson.gr/2025/05/16/ia-series-n-intelligent-agents.html">Intelligent Agents Term Sheet</a>. Most terms come from Russell and Norvig&rsquo;s &lsquo;Artificial Intelligence: A Modern Approach&rsquo; (Chapters 7-8) and the standard literature on formal logic.</em></p>
+<h2 id="introduction">Introduction</h2>
+<p>The ontology work has kept using a vocabulary I never formally defined — predicates, derived rules, well-formedness — all of it written in the language of logic. Before going further I wanted a term sheet for the <em>grammar</em> of that language: what the symbols are, what strings count as well-formed, and what a well-formed formula means. This post is that term sheet. It is deliberately lean; the aim is a shared vocabulary, not a textbook.</p>
+<h2 id="the-grammar--core-terminology">The Grammar — Core Terminology</h2>
+<h3 id="the-symbols">The symbols</h3>
+<ul>
+<li><strong>Formal language</strong>: A set of strings built from an alphabet according to formation rules.</li>
+<li><strong>Alphabet</strong>: The symbols a formal language is built from — logical constants, variables, predicates, functions, and punctuation.</li>
+<li><strong>Connectives</strong>: The logical constants that combine sentences.
+<ul>
+<li><strong>Negation (¬)</strong>: <em>not</em> — flips a sentence&rsquo;s truth value.</li>
+<li><strong>Conjunction (∧)</strong>: <em>and</em> — true only when both sides are true.</li>
+<li><strong>Disjunction (∨)</strong>: <em>or</em> — true when at least one side is true.</li>
+<li><strong>Implication (⇒)</strong>: <em>if &hellip; then &hellip;</em> — false only when the antecedent is true and the consequent is false.</li>
+<li><strong>Biconditional (⇔)</strong>: <em>if and only if</em> — true when both sides agree in truth value.</li>
+</ul>
+</li>
+<li><strong>Quantifiers</strong>: The logical constants that range over objects.
+<ul>
+<li><strong>Universal (∀)</strong>: <em>for all</em>.</li>
+<li><strong>Existential (∃)</strong>: <em>there exists</em>.</li>
+</ul>
+</li>
+<li><strong>Equality (=)</strong>: a predicate asserting two terms denote the same object.</li>
+<li><strong>Parentheses</strong>: grouping, and the grammar&rsquo;s only punctuation.</li>
+</ul>
+<h3 id="terms">Terms</h3>
+<ul>
+<li><strong>Term</strong>: An expression that refers to an object — a constant, a variable, or a function applied to terms.
+<ul>
+<li><strong>Constant symbol</strong>: Names a specific object (e.g., <code>pr-42</code>).</li>
+<li><strong>Variable symbol</strong>: Ranges over objects (e.g., <code>x</code>).</li>
+<li><strong>Function symbol</strong>: Maps objects to objects (e.g., <code>parent(x)</code>).</li>
+</ul>
+</li>
+</ul>
+<h3 id="predicates-and-sentences">Predicates and sentences</h3>
+<ul>
+<li><strong>Predicate symbol</strong>: A relation over objects. Applied to terms it yields an atomic sentence.</li>
+<li><strong>Atomic sentence (atom)</strong>: A predicate applied to terms — the smallest well-formed sentence (e.g., <code>merged(pr-42)</code>).</li>
+<li><strong>Compound sentence</strong>: Atoms combined with connectives and quantifiers.</li>
+<li><strong>Well-formed formula (wff)</strong>: A string that obeys the formation rules — the grammar&rsquo;s definition of a legal sentence.</li>
+<li><strong>Sentence</strong>: A well-formed formula with no free variables (a closed formula) — a claim that has a definite truth value in a model.</li>
+</ul>
+<h3 id="scope-and-binding">Scope and binding</h3>
+<ul>
+<li><strong>Scope</strong>: The part of a formula governed by a quantifier.</li>
+<li><strong>Bound variable</strong>: A variable within the scope of its own quantifier.</li>
+<li><strong>Free variable</strong>: A variable not bound by any quantifier. A formula with free variables is <em>open</em>; it has no definite truth value until the variables are assigned.</li>
+</ul>
+<h2 id="the-grammar-stated">The Grammar, stated</h2>
+<p>The formation rules, in BNF — this is the grammar of logic proper:</p>
+<pre tabindex="0"><code>Sentence         → AtomicSentence | ComplexSentence
+AtomicSentence   → Predicate(Term, ...) | Term = Term
+ComplexSentence  → ( Sentence )
+                 | ¬ Sentence
+                 | Sentence ∧ Sentence
+                 | Sentence ∨ Sentence
+                 | Sentence ⇒ Sentence
+                 | Sentence ⇔ Sentence
+                 | Quantifier Variable, ... Sentence
+Term             → Function(Term, ...) | Constant | Variable
+</code></pre><p>Everything else is not a sentence of the language — no matter how plausible it reads.</p>
+<p>This grammar declares facts — predicates and the sentences built from them. Actions, operations with preconditions and effects, are the <em>planning</em> half, written over this grammar&rsquo;s sentences rather than inside it.</p>
+<h2 id="semantics--meaning">Semantics — Meaning</h2>
+<ul>
+<li><strong>Interpretation</strong>: An assignment of meaning to a language — a domain plus a mapping that names the constants, predicates, and functions in it.</li>
+<li><strong>Model</strong>: An interpretation that makes a given sentence (or set of sentences) true.</li>
+<li><strong>Determination</strong>: A sentence has no intrinsic truth. The grammar determines what is well-formed; truth is determined relative to an interpretation, and which interpretation is intended is <em>attributed</em> — chosen by a human modeling the world, not discovered. No truth without a model; no model without an attributed interpretation.</li>
+<li><strong>Domain (universe)</strong>: The set of objects an interpretation ranges over.</li>
+<li><strong>Truth value</strong>: True or false — what a sentence receives relative to an interpretation.</li>
+<li><strong>Truth table</strong>: A complete enumeration of a connective&rsquo;s truth behaviour for all combinations of its arguments.</li>
+<li><strong>Satisfaction</strong>: A formula is satisfied by an interpretation when it is true in it.</li>
+<li><strong>Entailment (⊨)</strong>: <em>KB ⊨ α</em> — every model of the knowledge base is also a model of α. The semantic notion of logical consequence.</li>
+<li><strong>Validity</strong>: A sentence true in <em>every</em> interpretation (a tautology).</li>
+<li><strong>Satisfiability</strong>: A sentence true in <em>some</em> interpretation.</li>
+<li><strong>Contingency</strong>: A sentence true in some interpretations and false in others — neither valid nor contradictory.</li>
+<li><strong>Contradiction (unsatisfiability)</strong>: A sentence true in <em>no</em> interpretation.</li>
+<li><strong>Logical equivalence (≡)</strong>: Two sentences true in exactly the same interpretations.</li>
+</ul>
+<h2 id="reasoning--using-the-grammar">Reasoning — Using the Grammar</h2>
+<ul>
+<li><strong>Knowledge base (KB)</strong>: The set of sentences an agent holds to be true.</li>
+<li><strong>Inference</strong>: Deriving new sentences from existing ones.</li>
+<li><strong>Derivation (⊢)</strong>: <em>KB ⊢ α</em> — α is reachable from the KB by applying inference rules. The syntactic notion of proof.</li>
+<li><strong>Sound inference</strong>: Never derives a false conclusion — every derived sentence is entailed.</li>
+<li><strong>Complete inference</strong>: Can derive every entailed sentence.</li>
+<li><strong>Inference rules</strong>: The grammar&rsquo;s rewrite moves — e.g., <strong>modus ponens</strong> (<em>if</em> α ⇒ β <em>and</em> α <em>then</em> β), <strong>conjunction introduction</strong> (α, β ⊢ α ∧ β), <strong>resolution</strong> (a complete rule for propositional and first-order clauses).</li>
+<li><strong>Entailment vs derivation</strong>: Entailment (⊨) says what is <em>true given</em> the KB; derivation (⊢) says what is <em>provable from</em> it.</li>
+<li><strong>Soundness theorem</strong>: If ⊢ then ⊨ — the proof system never lies.</li>
+<li><strong>Completeness theorem</strong>: If ⊨ then ⊢ — everything true is provable.</li>
+<li><strong>Decidability</strong>: Whether a proof procedure is guaranteed to terminate with an answer. Propositional entailment is decidable; first-order entailment is not in general.</li>
+</ul>
+<h2 id="closing">Closing</h2>
+<p>The grammar is the substrate the world ontology is written in: predicates are atomic sentences, Kinds classify how their truth is determined, and a <code>derived</code> predicate is an entailment stated by a rule. This term sheet names the pieces so that work can be described precisely.</p>
+
+		</div>
+	  </div>
+	
+	  <div class="h-entry">
+		
 			<h1><a href="https://matt.thompson.gr/2026/08/10/ontology-ontology-ontology.html">Ontology, ontology, ontology</a></h1>
 		
 
@@ -578,7 +685,7 @@ document.querySelectorAll('.video-wrapper').forEach(wrapper => {
 		<div class="e-content">
 			 <p>It&rsquo;s been a week and then this DM arrives!</p>
 <p>Great abstract but what is Flux Matching!?!?</p>
-<img src="uploads/2026/f254b2c632.png" width="566" height="600" alt="">
+<img src="https://matt.thompson.gr/uploads/2026/f254b2c632.png" width="566" height="600" alt="">
 
 		</div>
 	  </div>
@@ -629,7 +736,7 @@ document.querySelectorAll('.video-wrapper').forEach(wrapper => {
 		<div class="e-content">
 			 <p>Claude is getting a stronger &ldquo;personality&rdquo;, it is hiding its thinking and using terms like &ldquo;load bearing&rdquo; and &ldquo;push back&rdquo; more and more.</p>
 <p>I&rsquo;ve switched to Sonnet today to see how I get on with that.</p>
-<p><img src="uploads/2026/38f2e8fb1a.png" width="600" height="201" alt=""><img src="uploads/2026/65b6dbf205.png" width="600" height="592" alt=""></p>
+<p><img src="https://matt.thompson.gr/uploads/2026/38f2e8fb1a.png" width="600" height="201" alt=""><img src="https://matt.thompson.gr/uploads/2026/65b6dbf205.png" width="600" height="592" alt=""></p>
 
 		</div>
 	  </div>
@@ -642,7 +749,7 @@ document.querySelectorAll('.video-wrapper').forEach(wrapper => {
 		<a href="https://matt.thompson.gr/2026/04/20/listen-to-the-right-people.html" class="u-url"><time class="dt-published" datetime="2026-04-20 18:02:27 &#43;0200">Apr 20, 2026</time></a>
 
 		<div class="e-content">
-			 <img src="uploads/2026/1776627373125.jpg" width="505" height="600" alt="">
+			 <img src="https://matt.thompson.gr/uploads/2026/1776627373125.jpg" width="505" height="600" alt="">
 
 		</div>
 	  </div>
@@ -654,7 +761,7 @@ document.querySelectorAll('.video-wrapper').forEach(wrapper => {
 
 		<div class="e-content">
 			 <p>Messy but escalation in play ✌🏼✌🏼✌🏼</p>
-<img src="uploads/2026/f108e72877.png" width="270" height="600" alt="">
+<img src="https://matt.thompson.gr/uploads/2026/f108e72877.png" width="270" height="600" alt="">
 
 		</div>
 	  </div>
@@ -878,7 +985,7 @@ document.querySelectorAll('.video-wrapper').forEach(wrapper => {
 <p><a href="https://arxiv.org/pdf/2510.18318v1">Earth AI: Unlocking Geospatial Insights with
 Foundation Models and Cross-Modal
 Reasoning</a></p>
-<img src="uploads/2026/5a1571ca69.png">
+<img src="https://matt.thompson.gr/uploads/2026/5a1571ca69.png">
 
 		</div>
 	  </div>
@@ -1303,7 +1410,7 @@ Replan or Escalate
 		<a href="https://matt.thompson.gr/2026/02/10/125426.html" class="u-url"><time class="dt-published" datetime="2026-02-10 13:54:26 &#43;0200">Feb 10, 2026</time></a>
 
 		<div class="e-content">
-			 <img src="uploads/2026/whatsapp-image-2026-02-07-at-11.51.05.jpg" width="600" height="450" alt="">
+			 <img src="https://matt.thompson.gr/uploads/2026/whatsapp-image-2026-02-07-at-11.51.05.jpg" width="600" height="450" alt="">
 
 		</div>
 	  </div>
@@ -1331,7 +1438,7 @@ Replan or Escalate
 
 		<div class="e-content">
 			 <p>As a Dad of two young girls this is nothing short of excellent news.</p>
-<img src="uploads/2026/adab97acab.png" width="270" height="600" alt="">
+<img src="https://matt.thompson.gr/uploads/2026/adab97acab.png" width="270" height="600" alt="">
 
 		</div>
 	  </div>
@@ -1347,7 +1454,7 @@ Replan or Escalate
 			 <p>This is a question that holds a lot of work on its shoulders!</p>
 <p>I&rsquo;m noting it here as it still has some weight to be unburdened, specifically that I have focused on an agent that uses Contingent Planning rather than an RL on/off-policy agent.</p>
 <p>I need to internalise what that means. Time to reread the right chapter of AIMA!!</p>
-<img src="uploads/2026/933c8d6992.png" width="322" height="600" alt="">
+<img src="https://matt.thompson.gr/uploads/2026/933c8d6992.png" width="322" height="600" alt="">
 
 		</div>
 	  </div>
@@ -1443,7 +1550,7 @@ It helps improve the product.</p>
 <blockquote>
 <p>this could be repeated daily.</p>
 </blockquote>
-<img src="uploads/2026/80ac03f3be.png" width="600" height="110" alt="">
+<img src="https://matt.thompson.gr/uploads/2026/80ac03f3be.png" width="600" height="110" alt="">
 
 		</div>
 	  </div>
@@ -2026,7 +2133,7 @@ It helps improve the product.</p>
 <li>&ldquo;Fact: Penguins cannot fly.&rdquo; - now we have the contradiction.</li>
 </ol>
 <p>The image of the Wikipedia definition shows a general set of sentences that shows why contradictions end up with everything being true.</p>
-<img src="uploads/2026/d235f108d5.png" width="270" height="600" alt="A Wikipedia page excerpt explains the principle of explosion in classical logic with a table illustrating logical premises and rules.">
+<img src="https://matt.thompson.gr/uploads/2026/d235f108d5.png" width="270" height="600" alt="A Wikipedia page excerpt explains the principle of explosion in classical logic with a table illustrating logical premises and rules.">
 <h2 id="how-does-paraconsistent-logic-solve-this">How does Paraconsistent Logic solve this?</h2>
 <p>I don&rsquo;t yet know for sure&hellip;. However my understanding right now is that disjunctive syllogisms are not &ldquo;allowed&rdquo; when there is one or more inconsistencies.</p>
 <p>Seems quite simple, so either I&rsquo;ve understood it or there&rsquo;s more to it!</p>
@@ -3008,7 +3115,7 @@ For DESIGN_PHASE ∈ D:
 		<div class="e-content">
 			 <p>Stephen Wolfram is talking about the Ruliad, Micheal Levin is talking about Platonic Space. They sound very similar&hellip; 🤔</p>
 <p>And here&rsquo;s the language of the space (any space!) 🤓</p>
-<img src="uploads/2025/a44f3fa594.jpg" width="600" height="422" alt="">
+<img src="https://matt.thompson.gr/uploads/2025/a44f3fa594.jpg" width="600" height="422" alt="">
 
 		</div>
 	  </div>
@@ -3019,7 +3126,7 @@ For DESIGN_PHASE ∈ D:
 		<a href="https://matt.thompson.gr/2025/11/23/102321.html" class="u-url"><time class="dt-published" datetime="2025-11-23 11:23:21 &#43;0200">Nov 23, 2025</time></a>
 
 		<div class="e-content">
-			 <img src="uploads/2025/gemini-meme.jpg" width="500" height="500" alt="">
+			 <img src="https://matt.thompson.gr/uploads/2025/gemini-meme.jpg" width="500" height="500" alt="">
 
 		</div>
 	  </div>
@@ -3494,7 +3601,7 @@ document.querySelectorAll('.video-wrapper').forEach(wrapper => {
 			 <p>Connecting information is what AI is about - had a great conversation with Akhil about LLM-as-a-Judge, recorded for reference and using a transcript of the meeting with the papers in NotebookLM results in some nice automated connections.</p>
 <p>In the images of NotebookLM it is citing the point in the conversation and the extract from the paper. That&rsquo;s pretty cool eh.</p>
 <p>Not sure the best way to share this&hellip; I had thought of writing a blog post but now I&rsquo;m thinking to link the video and the Notebook. Interesting times.</p>
-<p><img src="uploads/2025/screenshot-2025-10-03-at-09.52.56.png" alt="A digital document is overlaid with text boxes highlighting various sections, showcasing annotations and discussion points from a research paper or article."><img src="uploads/2025/screenshot-2025-10-03-at-09.53.19.png" alt="A digital document titled LLM as Judge: Evaluation, Improvement, and Refinement is displayed, featuring sections on goals, observations, context, and dialogue among participants."></p>
+<p><img src="https://matt.thompson.gr/uploads/2025/screenshot-2025-10-03-at-09.52.56.png" alt="A digital document is overlaid with text boxes highlighting various sections, showcasing annotations and discussion points from a research paper or article."><img src="https://matt.thompson.gr/uploads/2025/screenshot-2025-10-03-at-09.53.19.png" alt="A digital document titled LLM as Judge: Evaluation, Improvement, and Refinement is displayed, featuring sections on goals, observations, context, and dialogue among participants."></p>
 
 		</div>
 	  </div>
@@ -3559,7 +3666,7 @@ The opportunities often come from places you couldn’t have imagined - stay cur
 <p>Think like a data scientist, build like a software engineer.</p>
 </blockquote>
 <p>Thanks to Jason Mumford for this definition.</p>
-<img src="uploads/2025/6d90713340.jpg">
+<img src="https://matt.thompson.gr/uploads/2025/6d90713340.jpg">
 
 		</div>
 	  </div>
@@ -4899,7 +5006,7 @@ document.querySelectorAll('.video-wrapper').forEach(wrapper => {
 <p><strong>These tests serve as living documentation of what the agent is supposed to do</strong>.</p>
 <h2 id="next">Next</h2>
 <p>Next I&rsquo;m going to walk the talk and retrospectively implement this for the Self-Reflection agent. Exciting eh!! ;-)</p>
-<img src="uploads/2025/chatgpt-image-jul-24-2025-01-01-26-pm.png">
+<img src="https://matt.thompson.gr/uploads/2025/chatgpt-image-jul-24-2025-01-01-26-pm.png">
 
 		</div>
 	  </div>
@@ -7121,7 +7228,7 @@ function format_reflection_response(result) returns formatted_response
 
 		<div class="e-content">
 			 <p>Sneak preview</p>
-<img src="uploads/2025/19f9f40e51.png" width="600" height="569" alt="">
+<img src="https://matt.thompson.gr/uploads/2025/19f9f40e51.png" width="600" height="569" alt="">
 
 		</div>
 	  </div>
@@ -7281,7 +7388,7 @@ function format_reflection_response(result) returns formatted_response
 <p><a href="https://arxiv.org/pdf/2409.00113">Wait, that’s not an option: LLMs Robustness with Incorrect Multiple-Choice Options</a></p>
 <p>Alignment doesn&rsquo;t come from the model but the system the model is used in&hellip;</p>
 <p>Coming soon - how to make a system that thinks critically! 😉</p>
-<img src="uploads/2025/7b15499f81.png" width="600" height="363" alt="">
+<img src="https://matt.thompson.gr/uploads/2025/7b15499f81.png" width="600" height="363" alt="">
 
 		</div>
 	  </div>
@@ -7293,7 +7400,7 @@ function format_reflection_response(result) returns formatted_response
 
 		<div class="e-content">
 			 <p>The old &lsquo;un still does the job on the MINST Handwritten dataset !</p>
-<img src="uploads/2025/output.png" width="600" height="198" alt="">
+<img src="https://matt.thompson.gr/uploads/2025/output.png" width="600" height="198" alt="">
 
 		</div>
 	  </div>
@@ -7305,7 +7412,7 @@ function format_reflection_response(result) returns formatted_response
 
 		<div class="e-content">
 			 <p>Ska-en-Provence 🎶🎉</p>
-<img src="uploads/2025/8b0ef9853d.jpg" width="600" height="444" alt="">
+<img src="https://matt.thompson.gr/uploads/2025/8b0ef9853d.jpg" width="600" height="444" alt="">
 
 		</div>
 	  </div>
@@ -7786,7 +7893,7 @@ count <span style="color:#f92672">=</span> {}
 
 		<div class="e-content">
 			 <p>A refreshing AI-en-Provence 🍦</p>
-<img src="uploads/2025/8007971add.jpg" width="600" height="450" alt="">
+<img src="https://matt.thompson.gr/uploads/2025/8007971add.jpg" width="600" height="450" alt="">
 
 		</div>
 	  </div>
@@ -7798,7 +7905,7 @@ count <span style="color:#f92672">=</span> {}
 
 		<div class="e-content">
 			 <p>AI-en-Provence 🤓😂✌🏼✌🏼✌🏼</p>
-<img src="uploads/2025/2ed655ef6b.jpg" width="600" height="450" alt="">
+<img src="https://matt.thompson.gr/uploads/2025/2ed655ef6b.jpg" width="600" height="450" alt="">
 
 		</div>
 	  </div>
@@ -8119,7 +8226,7 @@ P(bird_type = other) = 0.998       // Most birds are &quot;generic flying birds&
 <p>It is still useful (better trained) but the output from an LLM is not reasoned.</p>
 <p>Some AI Systems have &ldquo;test time&rdquo; reasoning that&rsquo;s another thing.</p>
 <p>Brave has a nice comparison.</p>
-<img src="uploads/2025/364bc0760d.png" width="234" height="600" alt="">
+<img src="https://matt.thompson.gr/uploads/2025/364bc0760d.png" width="234" height="600" alt="">
 <h2 id="what-the-paper-shows">what the paper shows</h2>
 <p>I like that they tried to train the model with the general solution to the Tower of Hanoi problem. The failure of the model after this training is really interesting, as it strongly implies that the LLMs (or Large Reasoning Models - LRMs) are not a thing&hellip;</p>
 <h3 id="llms-lrms-and-rl-trained-tower-of-hanoi-lrms-all-fail-at-the-same-point">LLMs, LRMs, and RL trained Tower of Hanoi LRMs all fail at the same point</h3>
@@ -8771,7 +8878,7 @@ from Human Body Displaying Diurnal Rhythm</a></p>
 <p>Seems like a nice math trick to find the location of the median point, line, surface, or plane that separates data.</p>
 <p>It can work with data that is not linearly separable in 2 dimensions but is in 3 (or more) dimensions.</p>
 <h2 id="all-you-need-is-another-point-of-view">All you need is another point of view</h2>
-<img src="uploads/2025/d5cd8da13d.png" alt="All you need is another point of view">
+<img src="https://matt.thompson.gr/uploads/2025/d5cd8da13d.png" alt="All you need is another point of view">
 <h2 id="the-algebra">The algebra</h2>
 <p><a href="https://youtu.be/_PwhiWxHK8o?si=nMI2pNKz8LiQkirZ">MIT Course - 50 mins</a></p>
 <p><a href="https://www.youtube.com/watch?v=ny1iZ5A8ilA&amp;t=494s">Another vid - 15 minutes</a></p>
@@ -9524,7 +9631,7 @@ Notice that the first three correct Asimov&rsquo;s laws – it&rsquo;s not the r
 
 		<div class="e-content">
 			 <p>finally found something I wanted to use ChatGPT image generation for! On the fridge and the family loves it, going to be a busy week 👨🏻‍🌾</p>
-<img src="uploads/2025/uvp6rntt.png" width="400" height="600" alt="">
+<img src="https://matt.thompson.gr/uploads/2025/uvp6rntt.png" width="400" height="600" alt="">
 
 		</div>
 	  </div>
@@ -10026,7 +10133,7 @@ models <span style="color:#f92672">=</span> run_adaline_analysis(X_std, y, custo
 
 		<div class="e-content">
 			 <p>From Green Mars by Kim Stanley Robinson.</p>
-<img src="uploads/2025/17bd939c90.jpg" width="444" height="600" alt="">
+<img src="https://matt.thompson.gr/uploads/2025/17bd939c90.jpg" width="444" height="600" alt="">
 
 		</div>
 	  </div>
@@ -10584,7 +10691,7 @@ plt<span style="color:#f92672">.</span>show()
 			 <p>This is not normal nor is it ok. Meta is now the pervy old man you have to teach your kids to avoid.</p>
 <p><a href="https://transparency.meta.com/en-gb/policies/community-standards/hateful-conduct/">transparency.meta.com/en-gb/pol&hellip;</a></p>
 <p>#BeingHuman #ResponsibleAI</p>
-<img src="uploads/2025/screenshot-20250210-104138.png" width="414" height="600" alt="">
+<img src="https://matt.thompson.gr/uploads/2025/screenshot-20250210-104138.png" width="414" height="600" alt="">
 
 		</div>
 	  </div>
@@ -10615,7 +10722,7 @@ plt<span style="color:#f92672">.</span>show()
 		<div class="e-content">
 			 <p>First test with a &ldquo;reasoning&rdquo; model, pleasantly surprised.</p>
 <p>Not sure how to integrate it into my workflow though, there&rsquo;s a big response!!</p>
-<p><img src="uploads/2025/ddcd7f0520.png" width="52" height="600" alt=""><img src="uploads/2025/94bd2af9ba.png" width="78" height="600" alt=""></p>
+<p><img src="https://matt.thompson.gr/uploads/2025/ddcd7f0520.png" width="52" height="600" alt=""><img src="https://matt.thompson.gr/uploads/2025/94bd2af9ba.png" width="78" height="600" alt=""></p>
 
 		</div>
 	  </div>
@@ -10659,7 +10766,7 @@ plt<span style="color:#f92672">.</span>show()
 <p>Maths, computation, the mind, and related fields are a fascination for me.</p>
 <p>I had thought I was quite well informed and to a large degree I did know most of the science in more traditional Computer Science (it was my undergraduate degree…). What had slipped me by was reinforcement learning, both its mathematical grounding and value of application. If you’ve come from the previous post (<a href="https://matt.thompson.gr/2025/01/31/defining-artificial-intelligence-and-reinforcement.html">[RL Series 1/n] Defining Artificial Intelligence and Reinforcement Learning</a>) you know I’ve said something like that already. I’ll get over it and stop repeating myself soon, I’m sure 😉.</p>
 <p>I&rsquo;ve been told that an image at the top of a blog post is more engaging and I&rsquo;d like you to feel welcome and engage, so here&rsquo;s an image, generated by ChatGPT/DALLE, of the timeline in this post:</p>
-<img src="uploads/2025/dalle-2025-02-07-15.36.24a-visually-engaging-timeline-illustrating-major-pu.webp" width="600" height="342" alt="From Animals to Agents: Linking Psychology, Behaviour, Mathematics, and Decision Making" style="display: block; margin: 0 auto;">
+<img src="https://matt.thompson.gr/uploads/2025/dalle-2025-02-07-15.36.24a-visually-engaging-timeline-illustrating-major-pu.webp" width="600" height="342" alt="From Animals to Agents: Linking Psychology, Behaviour, Mathematics, and Decision Making" style="display: block; margin: 0 auto;">
 <h2 id="more-preamble">more preamble</h2>
 <p>So the whole Agent-Environment set up was new to me, introduced as part of a course I’m doing on AI Applications. We covered some theory on the Basics of Reinforcement Learning and the following methods:</p>
 <ul>
@@ -10939,7 +11046,7 @@ Book (1962): <a href="https://www.google.fr/books/edition/Dynamic_Programming_an
 <p>I created the graphs below by having two agents run in tandem, one doing the off-policy learning and one following up with an on-policy execution. The first three are metrics from the first agent and the last graph is comparing the last agent&rsquo;s path to the optimal one. See how the first agent gets good and receives a positive reward but the second agent hasn&rsquo;t yet got a consistent optimal policy to follow. There&rsquo;s a slight delay.</p>
 <p>So that&rsquo;s the key take away for me, off-policy is a training only algorithm that has an element of random/spontaneous exploring. Once trained the agent uses the learnt policy and follows an On-policy algorithm for execution.</p>
 <p>If anyone is reading this and found it useful or has questions let me know 🤓✌🏼</p>
-<img src="uploads/2025/image.png" width="600" height="268" alt="">
+<img src="https://matt.thompson.gr/uploads/2025/image.png" width="600" height="268" alt="">
 
 		</div>
 	  </div>
@@ -11051,7 +11158,7 @@ Book (1962): <a href="https://www.google.fr/books/edition/Dynamic_Programming_an
 
 		<div class="e-content">
 			 <p>Nice lunch time walk into the village</p>
-<img src="uploads/2025/image.jpg" width="600" height="269" alt="">
+<img src="https://matt.thompson.gr/uploads/2025/image.jpg" width="600" height="269" alt="">
 
 		</div>
 	  </div>
@@ -11099,7 +11206,7 @@ Book (1962): <a href="https://www.google.fr/books/edition/Dynamic_Programming_an
 
 		<div class="e-content">
 			 <p>My initial thoughts, expressed via the medium of sport, on agentic behaviours plus friends view, which I think is better (expected as he&rsquo;s the Basketball player).</p>
-<img src="uploads/2025/946a6d15f1.png" width="600" height="472" alt="">
+<img src="https://matt.thompson.gr/uploads/2025/946a6d15f1.png" width="600" height="472" alt="">
 <ul>
 <li>Jackson is the ethical agent.</li>
 <li>Pippen is the organizing agent.</li>
